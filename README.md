@@ -7,7 +7,7 @@ Samurai Rhythm platformer game
   - `Art/`: Contains fonts, materials, models, sprites and textures.
   - `Audio/`: Contains music and sound effects.
     - `Sound/`: Folder containing sound effects for item interaction or ambient sound.
-  - `Post Processing/`: 
+  - `Post Processing/`: Contains all the post processing that influences the visuals of the game.
   - `Prefabs/`: Contains prefabs.
   - `Renderer/`: Universal renderer pipeline files.
   - `Scenes/`: Contains all scenes.
