@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public float followSpeed = 2f;
-    public float yOffset = 1f;
+    public float xOffset = 5f;
     public Transform target;
 
     /// <summary>
@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, -10f);
+        Vector3 newPos = new Vector3(target.position.x + xOffset, 0, -10f);
         transform.position = Vector3.Slerp(transform.position, newPos, followSpeed * Time.deltaTime);
     }
 
@@ -25,6 +25,6 @@ public class CameraFollow : MonoBehaviour
     /// </summary>
     public void SetCameraPosition()
     {
-        transform.position = new Vector3(target.position.x, target.position.y + yOffset, -10f);
+        transform.position = new Vector3(target.position.x + xOffset, 0, -10f);
     }
 }
