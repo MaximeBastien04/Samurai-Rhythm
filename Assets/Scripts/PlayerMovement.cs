@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimeCounter = 0f;
     public int maxJumps = 2;
     private int remainingJumps;
+    ColorSwap colorSwap;
 
 
     void Awake()
@@ -25,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.canceled += ctx => move = Vector2.zero;
 
         controls.Player.Jump.performed += ctx => Jump();
+
+        colorSwap = GetComponent<ColorSwap>();
+        controls.Player.ChangeToBlue.performed += ctx => colorSwap.ChangeToBlue();
+        controls.Player.ChangeToPink.performed += ctx => colorSwap.ChangeToPink();
+        controls.Player.ChangeToGreen.performed += ctx => colorSwap.ChangeToGreen();
     }
 
     void Start()
@@ -62,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump called");
         if (coyoteTimeCounter > 0f || remainingJumps > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpHeight * 10); ;
@@ -82,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
     
     void GroundedCheck()
     {
-        Debug.Log(isGrounded);
         Vector2 origin = (Vector2)transform.position + Vector2.down * 0.6f;
         bool wasGrounded = isGrounded;
         float rayLength = 0.05f;
